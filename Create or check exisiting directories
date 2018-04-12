@@ -6,9 +6,9 @@ exp_id <- ask_id()
 
 # Assign to exp_handle (e.g. EXP-18-001) and date_exp_stamp (2018-01-01 EXP-18-001)
 exp_year <- exp_id[1]
-exp_num <- str_pad(exp_id[2],3, pad="0") # Format as a 3-digit number
+exp_num <- str_pad(exp_id[2],3, pad="0")
 exp_handle <- str_c('EXP',exp_year,exp_num,sep='-')
-date_exp_stamp <- str_c(Sys.Date()," ",exp_handle)
+date_exp_stamp <- str_c(Sys.Date(),exp_handle,sep=' ')
 
 # Check if a folder exists with the current experiment number (exp_handle)
 if(length(grep(str_c(exp_handle,' General analysis'), all_dirs)) == 0){
