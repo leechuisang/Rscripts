@@ -1,0 +1,29 @@
+# To rename a column in a dataframe *mydata*, from *oldcolname* to *newcolname* use:
+colnames(mydata)[which(names(dataframe) == "oldcolname")] <- "newcolname"
+
+# Example of *pressure_data* before renaming
+head(pressure_data)
+# Before renaming
+#  id vial_ID         tmt mins timePoint pressure
+#  1      A1      N2:CO2    0        T0      6.3
+#  2      A2      N2:CO2    0        T0      5.8
+#  3      A3      N2:CO2    0        T0      7.4
+#  4      B1 N2:CO2_NoAM    0        T0      3.9
+#  5      B2 N2:CO2_NoAM    0        T0      6.0
+#  6      B3 N2:CO2_NoAM    0        T0     12.5
+
+# Rename *vial_ID* with *Sample_ID*
+colnames(pressure_data)[which(names(pressure_data) == "vial_id")] <- "Sample_ID"
+
+# Example of *pressure_data* after renaming
+head(pressure_data)
+#  id Sample_ID         tmt mins timePoint pressure
+#  1      A1      N2:CO2    0        T0      6.3
+#  2      A2      N2:CO2    0        T0      5.8
+#  3      A3      N2:CO2    0        T0      7.4
+#  4      B1 N2:CO2_NoAM    0        T0      3.9
+#  5      B2 N2:CO2_NoAM    0        T0      6.0
+#  6      B3 N2:CO2_NoAM    0        T0     12.5
+
+
+
