@@ -1,0 +1,33 @@
+# Ask for experiment number from user input (e.g. 18-001)
+ask_id <- function(){
+  x <- readline("What is the EXP number? (Format YY-NNN): ")
+  x <- as.numeric(unlist(strsplit(x, "-")))}
+exp_id <- ask_id()
+
+# Assign to exp_handle (e.g. EXP-18-001) and date_exp_stamp (2018-01-01 EXP-18-001)
+exp_year <- exp_id[1]
+exp_num <- str_pad(exp_id[2],3, pad="0") # Format as a 3-digit number
+exp_handle <- str_c('EXP',exp_year,exp_num,sep='-')
+date_exp_stamp <- str_c(Sys.Date()," ",exp_handle)
+
+# Check if a folder exists with the current experiment number (exp_handle)
+if(length(grep(str_c(exp_handle,' General analysis'), all_dirs)) == 0){
+  # If not, create a new folder with today's date and experiment no (date_exp_stamp) and set as the output directory
+  cat(str_c("***Creating analysis folder for ", exp_handle,".***\n"))
+  dir.create(str_c(date_exp_stamp," General analysis/"))
+  output_dir <- str_c(date_exp_stamp," General analysis/")
+  all_dirs <- list.dirs(path=".")
+} else {
+  # Otherwise, check if the existing analysis was carried out today, and if so reuse the same folder as the output directory
+  if (all_dirs[grep(str_c(exp_handle,' General analysis'),all_dirs)] == str_c("./",date_exp_stamp," General analysis")){
+    cat(str_c("***Reusing today's analysis folder for ", exp_handle,".***\n"))
+    output_dir <- str_c(date_exp_stamp," General analysis/")
+    all_dirs <- list.dirs(path=".")
+  } else {
+    # Otherwise while the analysis already exists, create a new folder with today's date and same experiment handle as the output directory
+    cat(str_c("***Previous analysis for ",exp_handle," already exists. Running analysis again with today's date.***\n"))
+    dir.create(str_c(date_exp_stamp," General analysis/"))
+    output_dir <- str_c(date_exp_stamp," General analysis/")
+    all_dirs <- list.dirs(path=".")
+  }
+}
