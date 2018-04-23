@@ -1,4 +1,4 @@
-# Name all libraries required for script to run
+# Name all libraries required for script to run in list below
 list.of.packages <- c("ggplot2","ggpubr","stringr","RColorBrewer")
 
 # Check and install all libraries in that list
