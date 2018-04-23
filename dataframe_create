@@ -1,11 +1,11 @@
-# Identify VFAs and molecular weights (g/mol)
+# Identify lists containing *VFA_names* and their molecular weights *VFA_mwt* (g/mol)
 VFA_names = c("Acetate","Butyrate","Propionate","Valerate")
 VFA_mwt = c(59.044,87.098,73.071,101.125)
 
-# Combine into a dataframe called VFA_prop
+# Combine into a dataframe called *VFA_prop*
 VFA_prop <- data.frame(VFA_names, VFA_mwt)
 
-# Rename the columns and show data
+# Rename the columns *Result* and *MolWgt* and show data
 colnames(VFA_prop) <- c("Result","MolWgt")
 head(VFA_prop)
 
