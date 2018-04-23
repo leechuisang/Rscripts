@@ -1,8 +1,11 @@
 # Name all libraries required for script to run in list below
-list.of.packages <- c("ggplot2","ggpubr","stringr","RColorBrewer")
+list.of.packages <- c("installr", "ggplot2","ggpubr","stringr","RColorBrewer")
 
-# Check and install all libraries in that list
+# Then check and install all libraries in that list
 i <- NULL
 for (i in list.of.packages[(list.of.packages %in% installed.packages()[,"Package"])]){
   require(i, character.only = TRUE)
   }
+  
+# Using InstallR, update the current version
+updateR()
