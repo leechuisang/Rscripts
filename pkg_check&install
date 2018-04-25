@@ -6,6 +6,7 @@ list.of.packages <- c("installr","dplyr", "ggplot2","ggpubr","reshape2","stringr
 for (pkg in list.of.packages[(list.of.packages %in% installed.packages()[,"Package"])]){
   if(!require(pkg, character.only = TRUE)){
     install.packages(pkg)
-    require(pkg, character.only=TRUE)
-    }
+    require(pkg, character.only=TRUE)} 
+  else{
+    require(pkg, character.only=TRUE)}
 }
