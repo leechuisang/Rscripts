@@ -1,11 +1,12 @@
 # ==== Check and install all libraries needed ====
 # Make a list of all packages required
 req_packages <-                             
-  c(# To update R use: updateR(), pkg "stringr" automatically installed with it
-    "installr",                             
-    "magrittr",                             # For pipelining %>%
-    "dplyr", "gdata", "ggplot2", "ggpubr",  # Analysis packages plotting data
-    "RColorBrewer","wesanderson"            # For formatting
+  c("installr",                   # To update R use the command: updateR()
+    #"stringr",                   # 'stringr' auto installed with 'installr'
+    "gdata",                      # For MS-excel data manipulation
+    "magrittr",                   # For pipelining %>%
+    "dplyr", "ggplot2",           # For data.frame manipulation and plotting
+    "RColorBrewer","wesanderson"  # For colour formatting
     )
 
 # Load all libraries, and install and load if package is missing
