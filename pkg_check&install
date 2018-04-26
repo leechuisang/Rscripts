@@ -1,13 +1,17 @@
-## ===== Check and install all libraries needed ===== ##
+# ==== Check and install all libraries needed ====
 # Make a list of all packages required
-list.of.packages <- c("installr","dplyr","gdata","ggplot2","ggpubr","RColorBrewer","reshape2","stringr","wesanderson")
+req_packages <-                             
+  c(# To update R use: updateR(), pkg "stringr" automatically installed with it
+    "installr",                             
+    "magrittr",                             # For pipelining %>%
+    "dplyr", "gdata", "ggplot2", "ggpubr",  # Analysis packages plotting data
+    "RColorBrewer","wesanderson"            # For formatting
+    )
 
 # Load all libraries, and install and load if package is missing
-for (pkg in list.of.packages[(list.of.packages %in% installed.packages()[,"Package"])]){
+for(pkg in req_packages){
   if(!require(pkg, character.only = TRUE)){
     install.packages(pkg)
-    require(pkg, character.only=TRUE)
-  } else {
-      require(pkg, character.only=TRUE)
+    require(pkg, character.only = TRUE)
   }
 }
