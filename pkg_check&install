@@ -8,7 +8,6 @@ req_packages <-
     "dplyr", "ggplot2",           # For data.frame manipulation and plotting
     "RColorBrewer","wesanderson"  # For colour formatting
     )
-
 # Load all libraries, and install and load if package is missing
 for(pkg in req_packages){
   if(!require(pkg, character.only = TRUE)){
