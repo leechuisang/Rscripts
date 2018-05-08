@@ -1,0 +1,27 @@
+# To change the order of the factors of a dataset
+# in the given order using as.character()
+
+>dat
+Sample_ID Treatments    Order    Alpha
+1        T0   Inoculum  1.First  3.Third
+2        A1 N2CO2:Neg- 2.Second 4.Fourth
+3        B1 H2CO2:Pos+  3.Third 2.Second
+4        C1 H2CO2:LARS 4.Fourth  1.First
+
+> dat$Sample_ID
+[1] T0 A1 B1 C1
+Levels: A1 B1 C1 T0
+
+> order(dat$Sample_ID)
+[1] 2 3 4 1
+
+> as.character(dat$Sample_ID)
+[1] "T0" "A1" "B1" "C1"
+
+# AssignToHandle <- factor(ChangeTheFactorOfThisData, UsingThisList)
+> dat$Sample_ID <- factor(dat$Sample_ID, unique(as.character(dat$Sample_ID)))
+[1] T0 A1 B1 C1
+Levels: T0 A1 B1 C1
+
+> order(dat$Sample_ID)
+[1] 1 2 3 4
