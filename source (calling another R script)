@@ -1,0 +1,6 @@
+# ==== Call function from another R script/source ====
+# Check if the file exists in the working directory, and call it as a function
+if(!exists("foo", mode = "function")) source("bar.R")
+
+# Or just run an R script
+source("baz.R")
