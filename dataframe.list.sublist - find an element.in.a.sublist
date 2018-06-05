@@ -1,4 +1,11 @@
-# Given a dataframe containing a list of sublists
+# Given a dataframe containing a list of sublists:
+# Well_ID Abs_660nm temp
+#B1_1:200  0.1175    c("B1", "200")
+#B2_1:200  0.1255    c("B2", "200")
+#B1_1:400  0.1135    c("B1", "400")
+#B2_1:400  0.1185    c("B2", "400")
+
+# Data is viewed in R as:
 head(my_NH4$temp)
 [[1]]
 [1] "B1"  "200"
@@ -12,9 +19,8 @@ head(my_NH4$temp)
 [[4]]
 [1] "B2"  "400"
 
-# To obtain the nth element in the sublist of every list use:
-# [[ = in every sublist, 1/2 = get the 1st/2nd item etc.
-sapply(my_NH4$temp, "[[", 1) # To get the first item
+# To obtain the nth element in the sublist of every list ([[) use:
+sapply(my_NH4$temp, "[[", 1) # To get the first item in every list
 [1] "B1" "B2" "B1" "B2"
-sapply(my_NH4$temp, "[[", 2) # To get the second item etc.
+sapply(my_NH4$temp, "[[", 2) # To get the second item in every list etc.
 [1] "200" "200" "400" "400"
