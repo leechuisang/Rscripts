@@ -1,0 +1,20 @@
+# Given a dataframe containing a list of sublists
+head(my_NH4$temp)
+[[1]]
+[1] "B1"  "200"
+
+[[2]]
+[1] "B2"  "200"
+
+[[3]]
+[1] "B1"  "400"
+
+[[4]]
+[1] "B2"  "400"
+
+# To obtain the nth element in the sublist of every list use:
+# [[ = in every sublist, 1/2 = get the 1st/2nd item etc.
+sapply(my_NH4$temp, "[[", 1) # To get the first item
+[1] "B1" "B2" "B1" "B2"
+sapply(my_NH4$temp, "[[", 2) # To get the second item etc.
+[1] "200" "200" "400" "400"
