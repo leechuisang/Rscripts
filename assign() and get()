@@ -1,0 +1,19 @@
+> # Assign a string as a variable using the assign() function and call the data back using get()
+> x = c("my_likes", "my_hates")
+> y = c("beef", "chicken", "fish", "vegetables")
+>
+> assign(x[1], c(y[1], y[2]))
+> assign(x[2], c(y[3], y[4]))
+>
+> # Call the variable directly
+> my_likes
+[1] "beef"    "chicken"
+> # Or use the get() function (great for large datasets!)
+> get(x[1])
+[1] "beef"    "chicken"
+>
+> # Example continued
+> my_hates
+[1] "fish"       "vegetables"
+> get(x[2])
+[1] "fish"       "vegetables"
