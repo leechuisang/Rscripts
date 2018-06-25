@@ -1,27 +1,48 @@
 # To change the order of the factors of a dataset
 # in the given order using as.character()
-
 >dat
 Sample_ID Treatments    Order    Alpha
 1        T0   Inoculum  1.First  3.Third
 2        A1 N2CO2:Neg- 2.Second 4.Fourth
 3        B1 H2CO2:Pos+  3.Third 2.Second
 4        C1 H2CO2:LARS 4.Fourth  1.First
-
+>
 > dat$Sample_ID
 [1] T0 A1 B1 C1
 Levels: A1 B1 C1 T0
-
+>
 > order(dat$Sample_ID)
 [1] 2 3 4 1
-
+>
 > as.character(dat$Sample_ID)
 [1] "T0" "A1" "B1" "C1"
-
+>
 # AssignToHandle <- factor(ChangeTheFactorOfThisData, UsingThisList)
 > dat$Sample_ID <- factor(dat$Sample_ID, unique(as.character(dat$Sample_ID)))
 [1] T0 A1 B1 C1
 Levels: T0 A1 B1 C1
-
+>
 > order(dat$Sample_ID)
 [1] 1 2 3 4
+
+
+
+# EXAMPLE, given a dataset "test" where Sample_ID is randomised
+> test$Sample_ID
+ [1] B1 B2 B3 C1 C2 C3 D1 D2 D3 E1 E2 E3 F1 F2 F3 G1 G2 G3 A1 A2 A3 H1 H2 H3 I1 I2 I3
+31 Levels: B1 B2 B3 C1 C2 C3 Std100 Std25 Std50 D1 D2 D3 E1 E2 E3 F1 F2 F3 G1 G2 G3 A1 A2 A3 ... Std12.5
+>
+# And a list in which you want the data to be displayed in "tmt_data" to be ordered by Sample_ID
+> head(tmt_data)
+ Sample_ID             Tmt
+1        A1          N2:CO2
+2        A2          N2:CO2
+3        A3          N2:CO2
+4        B1 H2:CO2_NoAM_24h
+5        B2 H2:CO2_NoAM_24h
+6        B3 H2:CO2_NoAM_24h
+>
+> test$Sample_ID <- factor(test$Sample_ID, as.character(unique(tmt_data$Sample_ID)))
+> test$Sample_ID
+ [1] B1 B2 B3 C1 C2 C3 D1 D2 D3 E1 E2 E3 F1 F2 F3 G1 G2 G3 A1 A2 A3 H1 H2 H3 I1 I2 I3
+Levels: A1 A2 A3 B1 B2 B3 C1 C2 C3 D1 D2 D3 E1 E2 E3 F1 F2 F3 G1 G2 G3 H1 H2 H3 I1 I2 I3
