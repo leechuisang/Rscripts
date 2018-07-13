@@ -2,7 +2,9 @@
 > x = c("my_likes", "my_hates")
 > y = c("beef", "chicken", "fish", "vegetables")
 >
+> # Assign "beef" and "chicken" to "my_likes"
 > assign(x[1], c(y[1], y[2]))
+> # Assign "fish" and "vegetables" to "my_hates"
 > assign(x[2], c(y[3], y[4]))
 >
 > # Call the variable directly
