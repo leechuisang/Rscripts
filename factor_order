@@ -42,6 +42,8 @@ Levels: T0 A1 B1 C1
 5        B2 H2:CO2_NoAM_24h
 6        B3 H2:CO2_NoAM_24h
 >
+> # Create a list from tmt_data$Sample_ID in it's given order by using as.character()
+> # Then find the unique() entries in it, and assign it as the factors
 > test$Sample_ID <- factor(test$Sample_ID, as.character(unique(tmt_data$Sample_ID)))
 > test$Sample_ID
  [1] B1 B2 B3 C1 C2 C3 D1 D2 D3 E1 E2 E3 F1 F2 F3 G1 G2 G3 A1 A2 A3 H1 H2 H3 I1 I2 I3
