@@ -1,0 +1,27 @@
+# Add labels using a regular list c()
+# To add a superscript or subscript 2 use the following respectively: ^2 else [2]
+last_plot() + 
+  scale_x_discrete(
+    labels=c("Regular Line", 
+             bquote("Superscript without string following "^2)
+    )
+  )
+  
+# If text follows the superscript or subscript, include an asterisk right after, e.g. ^2*
+# and continue adding text within inverted commas ""
+
+last_plot() + 
+  scale_x_discrete(
+    labels=c("Regular Line", 
+             bquote("Subscript with string following "[2]*" like so...")
+    )
+  )
+
+# If you want to break it into two lines, use atop() within bquote()
+last_plot() + 
+  scale_x_discrete(
+    labels=c("Regular Line", 
+             bquote(atop("My top line cubed "^2, "My bottom line to the base ten "[10])
+             )
+    )
+  )
