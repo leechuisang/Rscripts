@@ -6,10 +6,9 @@ last_plot() +
              bquote("Superscript without string following "^2)
     )
   )
-  
+    
 # If text follows the superscript or subscript, include an asterisk right after, e.g. ^2*
 # and continue adding text within inverted commas ""
-
 last_plot() + 
   scale_x_discrete(
     labels=c("Regular Line", 
