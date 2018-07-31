@@ -2,15 +2,17 @@
 # Make a list of all packages required
 req_packages <-                             
   c("installr",                             # To update R use the command: updateR()
-    "stringr",                            	# For string manipulation
-                                            # ('stringr' auto installed with 'installr')
-    "gdata",                                # For MS-excel data manipulation
+    "stringr",                            	# For string manipulation (auto installed with 'installr')
+    "gdata", "reshape2",                    # For MS-excel data manipulation
+    "plater",                               # For microplate reader
+    "dunn.test",                            # Stats for non-normal distributed data
     "magrittr",                             # For pipelining %>%
     "dplyr",                                # For data.frame manipulation
     "cowplot", "ggplot2", "ggpubr",         # For plotting
     "colourpicker",                         # Great pkg for visual colour formatting!
     "RColorBrewer", "wesanderson"  		    	# For colour formatting
   )
+  
 # Load all libraries, and install and load if package is missing
 for(pkg in req_packages){
   if(!require(pkg, character.only = TRUE)){
