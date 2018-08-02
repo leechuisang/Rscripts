@@ -1,0 +1,20 @@
+## ===== Assuming there are more than 2 y-categories =====
+## === To perform a shapiro test with data by group (x2)
+# Fill in my_x1 with x, my_x2 with group, and my_y with y
+# Use aggregate
+grp_shapiro <- aggregate(formula = my_y ~ my_x1 + my_x2, data = data,
+                         FUN = function(x) {y <- shapiro.test(x); c(y$statistic, y$p.value)})
+# Or dplyr
+library(dplyr)
+my_data %>%
+  group_by(my_x1, my_x2) %>%
+  summarise(statistic = shapiro.test(my_y)$statistic,
+            p.value = shapiro.test(my_y)$p.value)
+            
+## === If p < 0.05 (not normal) perform a Kruskal-Wallis test, otherwise carry out an ANOVA
+grp_kruskal <- my_data %>% 
+      group_by(my_x1, my_x2) %>%
+      summarize(p.value = kruskal.test(my_data$my_y ~ my_data$my_x1)$p.value)
+
+## === If p < 0.05 (sig diff) perform a Dunn test to see where the diff lies
+#TODO
