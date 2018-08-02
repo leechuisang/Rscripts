@@ -1,0 +1,2 @@
+# After taking a subset of data, relabel the rownames with the new row number
+rownames(subset_data) <- c(1:length(rownames(subset_data)))
