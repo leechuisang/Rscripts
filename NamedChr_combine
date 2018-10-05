@@ -1,0 +1,13 @@
+## The function c() is used to create a non-recursive list which can contain named values
+## For creating facet labels a quick way to rename the groups can be used using:
+
+# Given a dataset where my_data$Days contains numbers 1 to 7
+# facet_wrap(~Days) will result in graphs being named "1" to "7"
+
+# Append the word "Day" before day numbers to create new labels
+facet_labs <- paste("Day", unique(my_data$Days))
+# OR if using stringr
+facet_labs <- str_c("Day", unique(my_data$Days), sep=" ")
+
+# Name each point of the dataset with the $Day alone
+names(facet_labs) <- c(unique(my_data$Day))
