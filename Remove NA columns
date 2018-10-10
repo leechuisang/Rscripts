@@ -1,0 +1,14 @@
+# To remove whole columns containing NA data
+# Find out how many rows are in the current data set
+nrow(raw_data)
+
+# Sum the number of NAs in each column of the data set
+colSums(is.na(raw_data))
+
+# Check which columns contain ALL NAs
+colSums(is.na(raw_data)) == nrow(raw_data)
+
+# Select only the columns that do not contain NAs
+raw_data[, !colSums(is.na(raw_data)) == nrow(raw_data)]
+# else
+raw_data[, colSums(is.na(raw_data)) != nrow(raw_data)]
