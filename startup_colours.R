@@ -9,7 +9,7 @@ export <- FALSE
 
 ## ==== Install and load libraries required ====
 req_packages <- c("stringr",
-                  "colourpicker",     # For colour formatting
+                  "colourpicker",                    # For colour formatting
                   "RColorBrewer", "wesanderson")     # For colour formatting
 for(pkg in req_packages){
   if(!require(pkg, character.only = TRUE)){
