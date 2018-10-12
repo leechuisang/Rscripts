@@ -1,0 +1,6 @@
+# Cute quicksave function ♥
+quicksave <- function(){
+  # Save the last image to the working directory
+  dev.copy(png, str_c("./", "000_quicksave.png"))
+  dev.off()
+}
