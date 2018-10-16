@@ -7,18 +7,17 @@
 
 # If the Day category has not yet been ordered, use factor() to order it
 # according to a list that has the category in the correct order
+# i.e. ordered_list <- c(1:7)
 my_data$Day <- factor(my_data$Day, unique(ordered_list$Day))
 
 # Provided that Days are in the correct order
 # Append the word "Day" before day numbers to create new labels
-facet_labs <- paste("Day", unique(my_data$Days)) # OR
 facet_labs <- paste("Day", levels(my_data$Days)
 # OR if using stringr
-facet_labs <- str_c("Day", unique(my_data$Days), sep=" ") # OR
 facet_labs <- str_c("Day", levels(my_data$Days), sep=" ")
 
 # Name each point of the dataset with the old label
-names(facet_labs) <- c(unique(my_data$Day))
+names(facet_labs) <- levels(my_data$Day)
 
 # Examples of manually adding new labels
 facet_labs <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
@@ -27,4 +26,4 @@ facet_labs <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturda
 facet_labs <- paste("Weekday", c(1:5)) %>% c(paste("Weekend", 1:2))
 [1] "Weekday 1" "Weekday 2" "Weekday 3" "Weekday 4" "Weekday 5" "Weekend 1" "Weekend 2"
 
-names(facet_labs) <- c(unique(my_data$Day))
+names(facet_labs) <- levels(my_data$Day)
