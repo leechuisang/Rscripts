@@ -5,10 +5,17 @@
 # Given a dataset where my_data$Days contains numbers 1 to 7
 # facet_wrap(~Days) will result in graphs being named "1" to "7"
 
+# If the Day category has not yet been ordered, use factor() to order it
+# according to a list that has the category in the correct order
+my_data$Day <- factor(my_data$Day, unique(ordered_list$Day))
+
+# Provided that Days are in the correct order
 # Append the word "Day" before day numbers to create new labels
-facet_labs <- paste("Day", unique(my_data$Days))
+facet_labs <- paste("Day", unique(my_data$Days)) # OR
+facet_labs <- paste("Day", levels(my_data$Days)
 # OR if using stringr
-facet_labs <- str_c("Day", unique(my_data$Days), sep=" ")
+facet_labs <- str_c("Day", unique(my_data$Days), sep=" ") # OR
+facet_labs <- str_c("Day", levels(my_data$Days), sep=" ")
 
 # Name each point of the dataset with the old label
 names(facet_labs) <- c(unique(my_data$Day))
