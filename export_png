@@ -1,0 +1,40 @@
+## ==== INTRO / Which commands to use? ==== ##
+# R can export plots an image, depending on whether the command is called via
+# the source (i.e. you may not even see the plot and want to save it using autorun)
+# or called interactively (i.e. while you're going through it line by line) you
+# will need to use commands from one group or the other
+
+## ==== Commands that work via source ====
+# To save images generated from a plot via source, use png() (or else bmp/pdf)
+# While using this command however, the user will not see the plot on screen
+# MY-PREFERRED-METHOD
+png("myoutputfile.png") # call the device, i.e. png, and the output file name
+plot() / ggplot() # plot your model
+dev.off() # close the device and save
+
+# Further options for png() can be used as follows:
+png("myoutputfile.png", width=1000, height=600, units="px")
+
+# Alternatively use ggsave() for "smart" options, the plot will be shown in R 
+# along with other plots that have not been sent to png() etc. as above
+# My-preffered-method-if-it-didn't-look-so-blocky-at-times?
+plot() / ggplot # plot your model
+ggsave("myoutputfile.png", last_plot(), width=10, height=60, units=c("in", "cm", "mm"), limitsize=TRUE)
+
+# If you have assigned your plot to a handle, e.g. myboxplot <- ggplot(), 
+# then you can sub last_plot() with myboxplot.
+
+## ==== Commands that only work interactively (unless mistaken) ====
+# dev.copy() and dev.print()
+# Pretty-quality-but-only-useful-during-interactive-sessions
+plot() / ggplot() # plot your model
+dev.copy(png, "myoutputfile.png")
+dev.off() # close the device and save
+
+# This seems to work interactively but when alone or piled with other dev.copy() commands none seem to save
+# The difference between dev.copy() and dev.print() is that the former leaves the plotted graphs in R while
+# the latter closes the graph. Images can also be saved with specific widthXheight dimesions like png()
+
+## ==== Closing all graphic devices ====
+# At the end of the script it is always good etiquette to close all graphic devices and clear the memory
+graphics.off()
