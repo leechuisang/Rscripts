@@ -1,16 +1,23 @@
 # ==== Check and install all libraries needed ====
 # Make a list of all packages required
 req_packages <-                             
-  c("installr",                             # To update R use the command: updateR()
-    "stringr",                            	# For string manipulation (auto installed with 'installr')
-    "gdata", "reshape2",                    # For MS-excel data manipulation
-    "plater",                               # For microplate reader
-    "dunn.test",                            # Stats for non-normal distributed data
-    "magrittr",                             # For pipelining %>%
-    "dplyr",                                # For data.frame manipulation
-    "cowplot", "ggplot2", "ggpubr",         # For plotting
-    "colourpicker",                         # Great pkg for visual colour formatting!
-    "RColorBrewer", "wesanderson"  		    	# For colour formatting
+  c("installr",                           # To update R use the command: updateR()
+    "stringr",                          	# For string manipulation
+                                          # ('stringr' auto installed with 'installr')
+    "dunn.test",                          # Stats for non-normal distributed data
+    "gdata", "reshape2",                  # For MS-excel data manipulation
+    "imputeTS",                           # To interpolate missing data
+    "rmarkdown",                          # For generating reports and presentations
+    "plater",                             # For microplate reader
+    "magrittr",                           # For pipelining %>%
+    "plyr", "dplyr",                      # For data.frame manipulation
+    "ggsignif",                           # For stats
+    "rmarkdown",                          # For Rmarkdown and output
+    "cowplot", "plotly",                  # For plotting and visual HTML
+    "ggplot2", "ggpubr",                  # For plotting
+    "colourpicker",                       # Great pkg for visual colour formatting!
+    "RColorBrewer", "randomcoloR",        # For colour formatting
+    "wesanderson"  	    	                # WesAnderson colour palettes
   )
   
 # Load all libraries, and install and load if package is missing
