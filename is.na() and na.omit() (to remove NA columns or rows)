@@ -1,0 +1,20 @@
+# ==== REMOVING WHOLE COLUMNS CONTAINING NA DATA ====
+# Find out how many rows are in the current data set
+nrow(raw_data)
+
+# Sum the number of NAs in each column of the data set
+colSums(is.na(raw_data))
+
+# Check which columns contain ALL NAs
+colSums(is.na(raw_data)) == nrow(raw_data)
+
+# Select only the columns that do not contain NAs
+new_data <- raw_data[, !colSums(is.na(raw_data)) == nrow(raw_data)]
+# else
+new_data <- raw_data[, colSums(is.na(raw_data)) != nrow(raw_data)]
+
+# ==== REMOVING ROWS CONTAINING ANY NA DATA ====
+# To remove NA from rows, use na.omit()
+new_data <- na.omit(raw_data)
+
+# COMBINE both commands so that your dataset contains no NA data
