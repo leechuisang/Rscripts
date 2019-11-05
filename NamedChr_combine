@@ -1,6 +1,6 @@
 ## The function c() is used to create a non-recursive list which can contain named values
 ## For creating facet labels a quick way to rename the groups can be used by
-## creating new labels first, then naming the value with the old label
+## creating new labels first as a list, then naming the values with the old label
 
 # Given a dataset where my_data$Days contains numbers 1 to 7
 # facet_wrap(~Days) will result in graphs being named "1" to "7"
@@ -14,7 +14,7 @@ my_data$Day <- factor(my_data$Day, unique(ordered_list$Day))
 # Append the word "Day" before day numbers to create new labels
 facet_labs <- paste("Day", levels(my_data$Days)
 # OR if using stringr
-facet_labs <- str_c("Day", levels(my_data$Days), sep=" ")
+facet_labs <- str_c("Day", levels(my_data$Days), sep = " ")
 
 # Name each point of the dataset with the old label
 names(facet_labs) <- levels(my_data$Day)
@@ -23,7 +23,7 @@ names(facet_labs) <- levels(my_data$Day)
 facet_labs <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 [1] "Monday"    "Tuesday"   "Wednesday" "Thursday"  "Friday"    "Saturday"  "Sunday"
 
-facet_labs <- paste("Weekday", c(1:5)) %>% c(paste("Weekend", 1:2))
+facet_labs <- c(paste("Weekday", 1:5), paste("Weekend", 1:2))
 [1] "Weekday 1" "Weekday 2" "Weekday 3" "Weekday 4" "Weekday 5" "Weekend 1" "Weekend 2"
 
 names(facet_labs) <- levels(my_data$Day)
